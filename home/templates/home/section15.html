@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section 15</title>
+</head>
+<body>
+
+    <h1>Section 15</h1>
+
+    <!-- Mostrar los datos reducidos en una tabla -->
+    <h3>Datos reducidos</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>c1</th>
+                <th>c2</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for data in reduced_data|slice:":10" %}  <!-- Limitar a los primeros 10 registros -->
+            <tr>
+                <td>{{ data.c1 }}</td>
+                <td>{{ data.c2 }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Feature Selection</h2>
+    <p>F1 Score: {{ f1_score_reduced }}</p>
+    <h3>Top Features Selected:</h3>
+    <ul>
+        <li>c1</li>
+        <li>c2</li>
+        <li>c3</li>
+        <li>c4</li>
+        <li>c5</li>
+        <li>c6</li>
+        <li>Class</li>
+    </ul>
+
+    <!-- Visualización de las gráficas -->
+    <h3>Reduced Dataset Visualization</h3>
+    <div>
+        <figure>
+            <figcaption>Scatter Plot of Reduced Dataset</figcaption>
+            <img src="data:image/png;base64,{{ scatter_plot }}" alt="Scatter Plot of Reduced Dataset">
+        </figure>
+    </div>
+
+    <h3>Decision Boundary Visualization</h3>
+    <div>
+        <figure>
+            <figcaption>Decision Boundary Plot</figcaption>
+            <img src="data:image/png;base64,{{ decision_boundary_plot }}" alt="Decision Boundary Plot">
+        </figure>
+    </div>
+
+    <!-- Mostrar otras variables -->
+    <div>
+        <p>Info Text: {{ info_text }}</p>
+        <p>F1 Validation Score: {{ f1_val_score }}</p>
+        <p>F1 Test Score: {{ f1_test_score }}</p>
+        <p>Proporcion de Varianza:</p>
+        <ul>
+            <li>[{{ explained_variance_ratio|join:", " }}]</li>
+        </ul>
+    </div>
+
+
+    
+</body>
+</html>
